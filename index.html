@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="theme-color" content="#18362f" />
+	<title>Reignvella Suites & Apartments | In-room dining</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" href="Style.css" />
+</head>
+<body>
+	<header class="site-header">
+		<a class="brand" href="#top" aria-label="Reignvella home"><img class="brand-mark" src="vella_logo.png" alt="" /><span><strong>THE REIGNVELLA</strong><small>SUITES & APARTMENTS MENU</small></span></a>
+		<nav class="main-nav" aria-label="Main navigation"><a href="#menu">Menu</a><a href="#contact">Contact</a></nav>
+		<button class="cart-button" id="cartButton" type="button"><i data-lucide="shopping-bag"></i><span>My order</span><b id="cartCount">0</b></button>
+	</header>
+
+	<main id="top">
+		<section class="hero"><div class="hero-copy"><p class="eyebrow"><span></span> Savour the Welcome at The ReignVella </p><h1>Good meals <em> generously </em> served.</h1><p class="hero-text">Every dish draws on native tradition and generous home-style cooking, prepared fresh, seasoned properly, and served with precision.</p><a class="primary-button" href="#menu">Explore the menu <i data-lucide="arrow-down-right"></i></a></div><div class="hero-photo"><div class="hero-note"><i data-lucide="clock-3"></i><span><strong>Serving daily</strong>08:00 — 22:00</span></div></div><div class="hero-stamp"><span>EST.</span><strong>RV</strong><span>2026</span></div></section>
+		<section class="menu-section" id="menu"><div class="menu-heading"><div><p class="eyebrow"><span></span> Dine with your loved ones</p><h2>Meals served for <br /><em>every moment.</em></h2></div><p class="menu-description">Hospitality, done properly, starts in the kitchen. Take your time, order what calls to you, and let us handle the rest.</p></div><div class="section-tabs" role="tablist" aria-label="Menu sections"><button class="section-tab active" data-section="Foods" role="tab">Foods</button><button class="section-tab" data-section="Drinks" role="tab">Drinks</button></div><div class="category-bar" id="categoryFilters" role="tablist" aria-label="Food categories"></div><div class="menu-grid" id="menuGrid"></div></section>
+		<section class="service-band"><div class="service-item"><i data-lucide="leaf"></i><div><strong>Freshly prepared</strong><span>Made in our kitchen, just for you</span></div></div><div class="service-item"><i data-lucide="door-open"></i><div><strong>Delivered with unmistakable flavor</strong><span>Every order is taken with precision and accurate timing</span></div></div><div class="service-item"><i data-lucide="message-circle"></i><div><strong>Easy ordering</strong><span>Complete your order securely on WhatsApp</span></div></div></section>
+	</main>
+
+	<footer id="contact"><div class="footer-brand"><img class="brand-mark" src="vella_logo.png" alt="" /><h2>Every meal feels like home at.</h2><p>Reignvella Suites & Apartments</p></div><div class="footer-detail"><p>For reservations, room service<br />and everything in between.</p><a href="https://wa.me/2348188313543" target="_blank" rel="noreferrer" class="text-link">Chat with us on WhatsApp <i data-lucide="arrow-up-right"></i></a></div><div class="footer-bottom"><span>© 2026 Reignvella</span><span>Victoria Island, Lagos</span><span>08:00 — 22:00 daily</span></div></footer>
+
+	<aside class="cart-drawer" id="cartDrawer" aria-hidden="true"><div class="drawer-head"><div><p class="eyebrow"><span></span> At your service</p><h2>Your order</h2></div><button class="icon-button" id="closeCart" aria-label="Close order"><i data-lucide="x"></i></button></div><div class="cart-items" id="cartItems"></div><div class="cart-footer"><div class="total-row"><span>Estimated total</span><strong id="cartTotal">₦0</strong></div><button class="whatsapp-button" id="checkoutButton" type="button"><i data-lucide="send"></i> Continue on WhatsApp</button><small>You'll confirm your suite details in WhatsApp.</small></div></aside><div class="scrim" id="scrim"></div>
+	<div class="toast" id="toast"><i data-lucide="check"></i><span>Added to your order</span></div>
+	<script src="https://unpkg.com/lucide@latest"></script>
+	<script>
+		const menu = [
+			{ id: 1, name: 'French Toast, Toast Bread & Omelet', description: 'Served with green tea, Lipton tea, 3-in-1 Nescafe coffee and milk', price: 7000, category: 'English Breakfast' },
+			{ id: 2, name: 'Moi-Moi & Custard', description: 'Akara and custard served with milk and sugar', price: 7000, category: 'English Breakfast' },
+			{ id: 3, name: 'Noodles and Egg', description: '—', price: 5000, category: 'Pasta' },
+			{ id: 4, name: 'Steamed Pasta and Stew', description: '—', price: 3000, category: 'Pasta' },
+			{ id: 5, name: 'Jollof Pasta', description: '—', price: 4000, category: 'Pasta' },
+			{ id: 6, name: 'Asun Pasta', description: '—', price: 5000, category: 'Pasta' },
+			{ id: 7, name: 'Yam Porridge', description: '—', price: 6000, category: 'Porridge Plate' },
+			{ id: 8, name: 'Plantain Porridge', description: '—', price: 6000, category: 'Porridge Plate' },
+			{ id: 9, name: 'Egusi Soup', description: 'Melon cooked with fresh leafy green, crayfish, traditional spices and garnished proteins', price: 3000, category: 'Native Soups' },
+			{ id: 10, name: 'Oha Soup', description: 'Shredded Oha Leaves simmered in a smooth cocoyam-thickened broth with palm oil, crayfish and ogiri', price: 3000, category: 'Native Soups' },
+			{ id: 11, name: 'Bitter Leaf Soup', description: 'Washed bitterleaf in a rich cocoyam thickened stock with native spices abd stockfish', price: 3000, category: 'Native Soups' },
+			{ id: 12, name: 'Nsala Soup', description: 'Rich and ligth white soup cooked with fresh proteins simmered in a yam thickened broth with native spices', price: 4000, category: 'Native Soups' },
+			{ id: 13, name: 'Vegetable Soup', description: 'Fresh leafy greens simmerd in a rich palm oil base with crayfish, fresh peppers and traditional seasonings', price: 4000, category: 'Native Soups' },
+			{ id: 14, name: 'Afang Soup', description: 'Fresh leafy greens with tender watreleaf cooked in a rich palm oil base garnished with crayfish and dryfish', price: 4000, category: 'Native Soups' },
+			{ id: 15, name: 'Cowtail Pepper Soup', description: 'Fresh Cowtail slowly simmered with native pepper soup spices and pepper with fresh scent leaves', price: 7000, category: 'Pepper Soup' },
+			{ id: 16, name: 'Catfish Pepper Soup', description: 'Fresh catfish slowly simmered with native pepper soup spices and pepper with fresh scent leaves', price: 9000, category: 'Pepper Soup' },
+			{ id: 17, name: 'Chicken Pepper Soup', description: 'Tendered Chicken slowly simmered with native pepper soup spices and pepper with fresh scent leaves', price: 9000, category: 'Pepper Soup' },
+			{ id: 18, name: 'Dry Fish Pepper Soup', description: 'Fresh catfish slowly simmered with native pepper soup spices and pepper with fresh scent leaves', price: 9000, category: 'Pepper Soup' },
+			{ id: 19, name: 'Goat Meat Pepper Soup', description: 'Fresh Goat meat slowly simmered with native pepper soup spices and pepper with fresh scent leaves', price: 8000, category: 'Pepper Soup' },
+			{ id: 20, name: 'Fried Yam, Potato, Plantain', description: 'Served with any peppered protein of choice, alongside coleslaw', price: 12000, category: 'Finger Soul Food' },
+			{ id: 21, name: 'Jollof Rice', description: '—', price: 5000, category: 'Rice Dishes' },
+			{ id: 22, name: 'Fried Rice', description: '—', price: 6000, category: 'Rice Dishes' },
+			{ id: 23, name: 'Asun Jollof Rice', description: '—', price: 7000, category: 'Rice Dishes' },
+			{ id: 24, name: 'Steamed Rice and Stew', description: '—', price: 4000, category: 'Rice Dishes' },
+			{ id: 25, name: 'Eba/Semovita', description: '—', price: 2000, category: 'Swallow' },
+			{ id: 26, name: 'Poundo Flour', description: '—', price: 2000, category: 'Swallow' },
+			{ id: 27, name: 'Plantain', description: '—', price: 3000, category: 'Side Dishes' },
+			{ id: 28, name: 'Fried, Boiled Yam and Egg Sauce', description: '—', price: 5000, category: 'Side Dishes' },
+			{ id: 29, name: 'Fried, Boiled Potato and Egg Sauce', description: '—', price: 5000, category: 'Side Dishes' },
+			{ id: 30, name: 'Fried, Boiled Plantain and Egg Sauce', description: '—', price: 5000, category: 'Side Dishes' },
+			{ id: 31, name: 'Peppered Snail', description: '—', price: 8000, category: 'Protein' },
+			{ id: 32, name: 'Beef', description: '—', price: 5000, category: 'Protein' },
+			{ id: 33, name: 'Goat Meat', description: '—', price: 7000, category: 'Protein' },
+			{ id: 34, name: 'Cow Tail', description: '—', price: 6000, category: 'Protein' },
+			{ id: 35, name: 'Croaker Fish', description: '—', price: 9000, category: 'Protein' },
+			{ id: 36, name: 'Catfish', description: '—', price: 8000, category: 'Protein' },
+			{ id: 37, name: 'Chicken', description: '—', price: 8000, category: 'Protein' },
+			{ id: 38, name: 'Turkey', description: '—', price: 9000, category: 'Protein' },
+			{ id: 39, name: 'Egg', description: '—', price: 1500, category: 'Protein' },
+			{ id: 40, name: 'Trophy Beer', description: '—', price: 1700, category: 'Beer' },
+			{ id: 41, name: 'Legend', description: '—', price: 2000, category: 'Beer' },
+			{ id: 42, name: 'Hero', description: '—', price: 1700, category: 'Beer' },
+			{ id: 43, name: 'Life', description: '—', price: 1700, category: 'Beer' },
+			{ id: 44, name: 'Star', description: '—', price: 1700, category: 'Beer' },
+			{ id: 45, name: 'Heineken (Big)', description: '—', price: 2000, category: 'Beer' },
+			{ id: 46, name: 'Heineken (Medium)', description: '—', price: 1800, category: 'Beer' },
+			{ id: 47, name: 'Budweiser', description: '—', price: 2000, category: 'Beer' },
+			{ id: 48, name: 'Gulder', description: '—', price: 1700, category: 'Beer' },
+			{ id: 49, name: 'Tiger', description: '—', price: 1700, category: 'Beer' },
+			{ id: 50, name: 'Medium Stout', description: '—', price: 1800, category: 'Beer' },
+			{ id: 51, name: 'Small Stout', description: '—', price: 1500, category: 'Beer' },
+			{ id: 52, name: 'Flying Fish', description: '—', price: 1500, category: 'Beer' },
+			{ id: 53, name: 'Smirnoff Ice', description: '—', price: 1500, category: 'Beer' },
+			{ id: 54, name: 'Smirnoff DB', description: '—', price: 2000, category: 'Beer' },
+			{ id: 55, name: 'Desperados', description: '—', price: 2000, category: 'Beer' },
+			{ id: 56, name: 'Castle Lite', description: '—', price: 1700, category: 'Beer' },
+			{ id: 57, name: 'Legend Stout', description: '—', price: 2000, category: 'Beer' },
+			{ id: 58, name: '33 Export', description: '—', price: 1700, category: 'Beer' },
+			{ id: 59, name: 'Plastic Coke,Fanta,Sprite', description: '—', price: 1000, category: 'Soft Drinks' },
+			{ id: 60, name: 'Fayrouz', description: '—', price: 1400, category: 'Soft Drinks' },
+			{ id: 61, name: 'Amstel Malt', description: '—', price: 1300, category: 'Soft Drinks' },
+			{ id: 62, name: 'Guinness Malt', description: '—', price: 1300, category: 'Soft Drinks' },
+			{ id: 63, name: 'Hollandia Yoghurt (Plain)', description: '—', price: 3500, category: 'Soft Drinks' },
+			{ id: 64, name: 'Hollandia Yoghurt (Strawberry)', description: '—', price: 3500, category: 'Soft Drinks' },
+			{ id: 65, name: 'Chi Exotic', description: '—', price: 3000, category: 'Soft Drinks' },
+			{ id: 66, name: 'Vita Milk', description: '—', price: 2500, category: 'Soft Drinks' },
+			{ id: 67, name: '5 Alive', description: '—', price: 2000, category: 'Soft Drinks' },
+			{ id: 68, name: 'Bottle Water', description: '—', price: 700, category: 'Soft Drinks' },
+			{ id: 69, name: 'Black Bullet', description: '—', price: 3500, category: 'Energy Drink' },
+			{ id: 70, name: 'Predator', description: '—', price: 1400, category: 'Energy Drink' },
+			{ id: 71, name: 'Red Bull', description: '—', price: 3000, category: 'Energy Drink' },
+			{ id: 72, name: 'Four Cousins', description: '—', price: 15000, category: 'Alcoholic Wine' },
+			{ id: 73, name: 'Escudo Rojo', description: '—', price: 30000, category: 'Alcoholic Wine' },
+			{ id: 74, name: 'Asconi Agor', description: '—', price: 20000, category: 'Alcoholic Wine' },
+			{ id: 75, name: 'Jameson Green', description: '—', price: 50000, category: 'Whiskey' },
+			{ id: 76, name: 'Jameson Black', description: '—', price: 80000, category: 'Whiskey' },
+			{ id: 77, name: 'Origin Bitters', description: '—', price: 3000, category: 'Bitters' },
+			{ id: 78, name: 'Action Bitters', description: '—', price: 3000, category: 'Bitters' },
+			{ id: 79, name: 'Lacoco', description: '—', price: 1500, category: 'Bitters' }
+		];
+		let cart = [];
+		const whatsappNumber = '2348000000000';
+		const categoryImages = {
+			'English Breakfast': 'https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=900&q=85',
+			'Pasta': 'https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=900&q=85',
+			'Porridge Plate': 'https://images.unsplash.com/photo-1572449043416-55f4685c9bb7?auto=format&fit=crop&w=900&q=85',
+			'Native Soups': 'https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=85',
+			'Pepper Soup': 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=900&q=85',
+			'Finger Soul Food': 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=900&q=85',
+			'Rice Dishes': 'https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=900&q=85',
+			'Swallow': 'https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?auto=format&fit=crop&w=900&q=85',
+			'Side Dishes': 'https://images.unsplash.com/photo-1563379926898-05f4575a45d8?auto=format&fit=crop&w=900&q=85',
+			'Protein': 'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=900&q=85',
+			'Beer': 'https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=900&q=85',
+			'Soft Drinks': 'https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=900&q=85',
+			'Energy Drink': 'https://images.unsplash.com/photo-1622543925917-763c34d1a86e?auto=format&fit=crop&w=900&q=85',
+			'Alcoholic Wine': 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=900&q=85',
+			'Whiskey': 'https://images.unsplash.com/photo-1527281400683-1aae777175f8?auto=format&fit=crop&w=900&q=85',
+			'Bitters': 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=900&q=85'
+		};
+		const itemImages = {
+			'French Toast, Toast Bread & Omelet': 'food/French Toast, Toast Bread & Omelet.jfif', 'Moi-Moi & Custard': 'food/Moi-Moi & Custard.jpg', 'Noodles and Egg': 'food/Noodles and Egg.jfif', 'Steamed Pasta and Stew': 'food/Steamed Pasta and Stew.jpeg', 'Jollof Pasta': 'food/Jollof Pasta.jpg', 'Asun Pasta': 'food/Asun Pasta.webp', 'Yam Porridge': 'food/Yam Porridge.jfif', 'Plantain Porridge': 'food/Plantain Porridge.jpg',
+			'Egusi Soup': 'food/Egusi Soup.jfif', 'Oha Soup': 'food/Oha Soup.webp', 'Bitter Leaf Soup': 'food/Bitter Leaf Soup.jfif', 'Nsala Soup': 'food/Nsala Soup.jfif', 'Vegetable Soup': 'food/Vegetable Soup.webp', 'Afang Soup': 'food/Afang Soup.jfif', 'Cowtail Pepper Soup': 'food/Cowtail Pepper Soup.jfif', 'Catfish Pepper Soup': 'food/Catfish Pepper Soup.webp', 'Chicken Pepper Soup': 'food/Chicken Pepper Soup.webp', 'Dry Fish Pepper Soup': 'food/Dry Fish Pepper Soup.jfif', 'Goat Meat Pepper Soup': 'food/Goat Meat Pepper Soup.webp',
+			'Fried Yam, Potato, Plantain': 'food/Fried Yam, Potato, Plantain.jfif', 'Jollof Rice': 'food/Jollof Rice.webp', 'Fried Rice': 'food/Fried Rice.webp', 'Asun Jollof Rice': 'food/Asun Jollof Rice.jpeg', 'Steamed Rice and Stew': 'food/Steamed rice & stew.jfif', 'Eba/Semovita': 'food/Eba semo.jfif', 'Poundo Flour': 'food/Eba.jfif', 'Plantain': 'food/Fried Plantain.jfif', 'Fried, Boiled Yam and Egg Sauce': 'food/Fried, Boiled Yam and Egg Sauce.jfif', 'Fried, Boiled Potato and Egg Sauce': 'food/Fried, Boiled Potato and Egg Sauce.jfif', 'Fried, Boiled Plantain and Egg Sauce': 'food/Fried, Boiled Plantain and Egg Sauce.jfif',
+			'Peppered Snail': 'food/Peppered Snail.webp', 'Beef': 'food/Beef.jfif', 'Goat Meat': 'food/Goat Meat.jfif', 'Cow Tail': 'food/Cow Tail.jfif', 'Croaker Fish': 'food/Croaker Fish.jfif', 'Catfish': 'food/Catfish.jfif', 'Chicken': 'food/Chicken.jfif', 'Turkey': 'food/Turkey.jfif', 'Egg': 'food/Egg.jfif',
+			'Trophy Beer': 'drinks/Trophy.webp', 'Legend': 'drinks/Legend.jpg', 'Hero': 'drinks/Hero.jfif', 'Life': 'drinks/Life.png', 'Star': 'drinks/Star.jfif', 'Heineken (Big)': 'drinks/Heineken.webp', 'Heineken (Medium)': 'drinks/Heineken.webp', 'Budweiser': 'drinks/Budweiser.jfif', 'Gulder': 'drinks/Gulder.jfif', 'Tiger': 'drinks/Tiger.jfif', 'Medium Stout': 'drinks/Medium Stout.jfif', 'Small Stout': 'drinks/small stout.jfif', 'Flying Fish': 'drinks/Flying Fish.jfif', 'Smirnoff Ice': 'drinks/Smirnoff.webp', 'Smirnoff DB': 'drinks/Smirnoff DB.jfif', 'Desperados': 'drinks/Desperados.jfif', 'Castle Lite': 'drinks/Castle Light.jfif', 'Legend Stout': 'drinks/Legend Stout.jfif', '33 Export': 'drinks/33 export.jfif',
+			'Plastic Coke/Fanta/Sprite': 'drinks/Plastic Coke,Fanta,Sprite.jfif', 'Plastic Coke,Fanta,Sprite': 'drinks/Plastic Coke,Fanta,Sprite.jfif', 'Fayrouz': 'drinks/Fayrouz.jfif', 'Amstel Malt': 'drinks/Amstel Malt.jfif', 'Guinness Malt': 'drinks/Guiness Malt.jfif', 'Hollandia Yoghurt (Plain)': 'drinks/Hollandia Yoghurt (Plain).jfif', 'Hollandia Yoghurt (Strawberry)': 'drinks/Hollandia Yoghurt (Strawberry).jfif', 'Chi Exotic': 'drinks/Chi Exotic.jfif', 'Vita Milk': 'drinks/Vita Milk.jfif', '5 Alive': 'drinks/5 Alive.jfif', 'Water': 'drinks/Bottle Water.jfif', 'Bottle Water': 'drinks/Bottle Water.jfif', 'Black Bullet': 'drinks/Black Bullet.png', 'Predator': 'drinks/predator.jfif', 'Red Bull': 'drinks/redbull.jfif', 'Four Cousins': 'drinks/Four Cousins.jfif', 'Escudo Rojo': 'drinks/Escudo Rojo.jfif', 'Ascon Agor': 'drinks/Asconi Agor.jfif', 'Asconi Agor': 'drinks/Asconi Agor.jfif', 'Jameson Green': 'drinks/Jameson Green.jfif', 'Jameson Black': 'drinks/Jameson Black.jfif', 'Origin Bitters': 'drinks/Origin Bitters.jfif', 'Action Bitters': 'drinks/Action Bitters.jfif', 'Lacoco': 'drinks/Lacoco.jfif'
+		};
+		const sectionCategories = {
+			Foods: ['English Breakfast', 'Pasta', 'Porridge Plate', 'Native Soups', 'Pepper Soup', 'Finger Soul Food', 'Rice Dishes', 'Swallow', 'Side Dishes', 'Protein'],
+			Drinks: ['Beer', 'Soft Drinks', 'Energy Drink', 'Alcoholic Wine', 'Whiskey', 'Bitters']
+		};
+		let currentSection = 'Foods';
+		const naira = value => `₦${value.toLocaleString('en-NG')}`;
+		const grid = document.getElementById('menuGrid');
+		function renderCategories() { const categories = sectionCategories[currentSection]; document.getElementById('categoryFilters').innerHTML = `<button class="category active" data-category="All" role="tab">All</button>` + categories.map(category => `<button class="category" data-category="${category}" role="tab">${category}</button>`).join(''); }
+		function renderMenu(category = 'All') { const categories = sectionCategories[currentSection]; grid.innerHTML = menu.filter(item => categories.includes(item.category) && (category === 'All' || item.category === category)).map(item => `<article class="menu-card"><div class="card-image"><img src="${itemImages[item.name] || categoryImages[item.category]}" alt="${item.name}" loading="lazy" />${item.tag ? `<span class="card-tag">${item.tag}</span>` : ''}</div><div class="card-content"><div><p class="card-category">${item.category}</p><h3>${item.name}</h3></div><p class="card-description">${item.description}</p><div class="card-action"><strong>${naira(item.price)}</strong><button class="add-button" data-id="${item.id}" aria-label="Add ${item.name} to order"><i data-lucide="plus"></i></button></div></div></article>`).join(''); lucide.createIcons(); }
+		function renderCart() { const count = cart.reduce((sum, item) => sum + item.quantity, 0); const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0); document.getElementById('cartCount').textContent = count; document.getElementById('cartTotal').textContent = naira(total); document.getElementById('cartItems').innerHTML = cart.length ? cart.map(item => `<div class="cart-line"><img src="${itemImages[item.name] || categoryImages[item.category]}" alt="" /><div class="cart-line-info"><strong>${item.name}</strong><span>${naira(item.price)}</span><div class="quantity"><button data-action="decrease" data-id="${item.id}" aria-label="Decrease quantity">−</button><span>${item.quantity}</span><button data-action="increase" data-id="${item.id}" aria-label="Increase quantity">+</button></div></div><button class="remove-item" data-action="remove" data-id="${item.id}" aria-label="Remove ${item.name}"><i data-lucide="trash-2"></i></button></div>`).join('') : '<div class="empty-cart"><i data-lucide="utensils"></i><p>Your order is waiting<br />for something delicious.</p><a href="#menu" id="browseMenu">Browse menu</a></div>'; lucide.createIcons(); }
+		function openCart() { document.getElementById('cartDrawer').classList.add('open'); document.getElementById('scrim').classList.add('visible'); document.getElementById('cartDrawer').setAttribute('aria-hidden', 'false'); }
+		function closeCart() { document.getElementById('cartDrawer').classList.remove('open'); document.getElementById('scrim').classList.remove('visible'); document.getElementById('cartDrawer').setAttribute('aria-hidden', 'true'); }
+		renderCategories(); renderMenu(); renderCart();
+		document.querySelector('.section-tabs').addEventListener('click', event => { const button = event.target.closest('.section-tab'); if (!button) return; currentSection = button.dataset.section; document.querySelectorAll('.section-tab').forEach(item => item.classList.remove('active')); button.classList.add('active'); renderCategories(); renderMenu(); });
+		document.getElementById('categoryFilters').addEventListener('click', event => { const button = event.target.closest('.category'); if (!button) return; document.querySelectorAll('.category').forEach(item => item.classList.remove('active')); button.classList.add('active'); renderMenu(button.dataset.category); });
+		grid.addEventListener('click', event => { const button = event.target.closest('.add-button'); if (!button) return; const selected = menu.find(item => item.id === Number(button.dataset.id)); const existing = cart.find(item => item.id === selected.id); existing ? existing.quantity++ : cart.push({ ...selected, quantity: 1 }); renderCart(); document.getElementById('toast').classList.add('show'); setTimeout(() => document.getElementById('toast').classList.remove('show'), 1800); });
+		document.getElementById('cartItems').addEventListener('click', event => { const button = event.target.closest('[data-action]'); if (!button) return; const item = cart.find(entry => entry.id === Number(button.dataset.id)); if (button.dataset.action === 'increase') item.quantity++; if (button.dataset.action === 'decrease') item.quantity--; if (button.dataset.action === 'remove' || item.quantity < 1) cart = cart.filter(entry => entry.id !== item.id); renderCart(); });
+		document.getElementById('cartButton').addEventListener('click', openCart); document.getElementById('closeCart').addEventListener('click', closeCart); document.getElementById('scrim').addEventListener('click', closeCart); document.getElementById('cartItems').addEventListener('click', event => { if (event.target.closest('#browseMenu')) closeCart(); });
+		document.getElementById('checkoutButton').addEventListener('click', () => { if (!cart.length) return; const lines = cart.map(item => `${item.quantity} x ${item.name} - ${naira(item.price * item.quantity)}`).join('%0A'); const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0); window.open(`https://wa.me/${whatsappNumber}?text=Hello%20Reignvella!%20I%27d%20like%20to%20place%20an%20order:%0A%0A${lines}%0A%0AEstimated%20total:%20${naira(total)}%0A%0ASuite%20number:%20`, '_blank'); });
+	</script>
+</body>
+</html>
