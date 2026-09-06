@@ -33,9 +33,10 @@
 			{ id: 1, name: 'French Toast, Toast Bread & Omelet', description: 'Served with green tea, Lipton tea, 3-in-1 Nescafe coffee and milk', price: 7000, category: 'English Breakfast' },
 			{ id: 2, name: 'Moi-Moi & Custard', description: 'Akara and custard served with milk and sugar', price: 7000, category: 'English Breakfast' },
 			{ id: 3, name: 'Noodles and Egg', description: '', price: 5000, category: 'Pasta' },
+			{ id: 80, name: 'Special Noodles with Egg and Hotdog', description: '', price: 6000, category: 'Pasta' },
 			{ id: 4, name: 'Steamed Pasta and Stew', description: '', price: 3000, category: 'Pasta' },
 			{ id: 5, name: 'Jollof Pasta', description: '', price: 4000, category: 'Pasta' },
-			{ id: 6, name: 'Asun Pasta', description: '', price: 5000, category: 'Pasta' },
+			{ id: 6, name: 'Asun Pasta', description: '', price: 6000, category: 'Pasta' },
 			{ id: 7, name: 'Yam Porridge', description: '', price: 6000, category: 'Porridge Plate' },
 			{ id: 8, name: 'Plantain Porridge', description: '', price: 6000, category: 'Porridge Plate' },
 			{ id: 9, name: 'Egusi Soup', description: 'Melon cooked with fresh leafy green, crayfish, traditional spices and garnished proteins', price: 3000, category: 'Native Soups' },
@@ -44,6 +45,7 @@
 			{ id: 12, name: 'Nsala Soup', description: 'Rich and ligth white soup cooked with fresh proteins simmered in a yam thickened broth with native spices', price: 4000, category: 'Native Soups' },
 			{ id: 13, name: 'Vegetable Soup', description: 'Fresh leafy greens simmerd in a rich palm oil base with crayfish, fresh peppers and traditional seasonings', price: 4000, category: 'Native Soups' },
 			{ id: 14, name: 'Afang Soup', description: 'Fresh leafy greens with tender watreleaf cooked in a rich palm oil base garnished with crayfish and dryfish', price: 4000, category: 'Native Soups' },
+			{ id: 81, name: 'Ogbono Soup', description: '', price: 3000, category: 'Native Soups' },
 			{ id: 15, name: 'Cowtail Pepper Soup', description: 'Fresh Cowtail slowly simmered with native pepper soup spices and pepper with fresh scent leaves', price: 7000, category: 'Pepper Soup' },
 			{ id: 16, name: 'Catfish Pepper Soup', description: 'Fresh catfish slowly simmered with native pepper soup spices and pepper with fresh scent leaves', price: 9000, category: 'Pepper Soup' },
 			{ id: 17, name: 'Chicken Pepper Soup', description: 'Tendered Chicken slowly simmered with native pepper soup spices and pepper with fresh scent leaves', price: 9000, category: 'Pepper Soup' },
@@ -69,6 +71,7 @@
 			{ id: 37, name: 'Chicken', description: '', price: 8000, category: 'Protein' },
 			{ id: 38, name: 'Turkey', description: '', price: 9000, category: 'Protein' },
 			{ id: 39, name: 'Boiled Egg', description: '', price: 1500, category: 'Protein' },
+			{ id: 82, name: 'Dry Fish', description: '', price: 8000, category: 'Protein' },
 			{ id: 40, name: 'Trophy Beer', description: '', price: 1700, category: 'Beer' },
 			{ id: 41, name: 'Legend', description: '', price: 2000, category: 'Beer' },
 			{ id: 42, name: 'Hero', description: '', price: 1700, category: 'Beer' },
@@ -98,6 +101,9 @@
 			{ id: 66, name: 'Vita Milk', description: '', price: 2500, category: 'Soft Drinks' },
 			{ id: 67, name: '5 Alive', description: '', price: 2000, category: 'Soft Drinks' },
 			{ id: 68, name: 'Bottle Water', description: '', price: 700, category: 'Soft Drinks' },
+			{ id: 83, name: 'Ribena', description: '', price: 1500, category: 'Soft Drinks' },
+			{ id: 84, name: 'Chivita', description: '', price: 3000, category: 'Soft Drinks' },
+			{ id: 85, name: 'Berry Blast', description: '', price: 2000, category: 'Soft Drinks' },
 			{ id: 69, name: 'Black Bullet', description: '', price: 3500, category: 'Energy Drink' },
 			{ id: 70, name: 'Predator', description: '', price: 1400, category: 'Energy Drink' },
 			{ id: 71, name: 'Red Bull', description: '', price: 3000, category: 'Energy Drink' },
@@ -131,12 +137,12 @@
 			'Bitters': 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=900&q=85'
 		};
 		const itemImages = {
-			'French Toast, Toast Bread & Omelet': 'food/French Toast, Toast Bread & Omelet.jfif', 'Moi-Moi & Custard': 'food/Moi-Moi & Custard.jpg', 'Noodles and Egg': 'food/Noodles and Egg.jfif', 'Steamed Pasta and Stew': 'food/Steamed Pasta and Stew.webp', 'Jollof Pasta': 'food/Jollof Pasta.jpg', 'Asun Pasta': 'food/Asun Pasta.webp', 'Yam Porridge': 'food/Yam Porridge.jfif', 'Plantain Porridge': 'food/Plantain Porridge.jpg',
-			'Egusi Soup': 'food/Egusi Soup.jfif', 'Oha Soup': 'food/Oha Soup.webp', 'Bitter Leaf Soup': 'food/Bitter Leaf Soup.jfif', 'Nsala Soup': 'food/Nsala Soup.jfif', 'Vegetable Soup': 'food/Vegetable Soup.webp', 'Afang Soup': 'food/Afang Soup.jfif', 'Cowtail Pepper Soup': 'food/Cowtail Pepper Soup.webp', 'Catfish Pepper Soup': 'food/Catfish Pepper Soup.webp', 'Chicken Pepper Soup': 'food/Chicken Pepper Soup.webp', 'Dry Fish Pepper Soup': 'food/Dry Fish Pepper Soup.webp', 'Goat Meat Pepper Soup': 'food/Goat Meat Pepper Soup.webp',
+			'French Toast, Toast Bread & Omelet': 'food/French Toast, Toast Bread & Omelet.jfif', 'Moi-Moi & Custard': 'food/Moi-Moi & Custard.jpg', 'Noodles and Egg': 'food/Noodles and Egg.jfif', 'Special Noodles with Egg and Hotdog': 'food/Special Noodles with Egg and Hotdog.jpeg', 'Steamed Pasta and Stew': 'food/Steamed Pasta and Stew.webp', 'Jollof Pasta': 'food/Jollof Pasta.jpg', 'Asun Pasta': 'food/Asun Pasta.webp', 'Yam Porridge': 'food/Yam Porridge.jfif', 'Plantain Porridge': 'food/Plantain Porridge.jpg',
+			'Egusi Soup': 'food/Egusi Soup.jfif', 'Oha Soup': 'food/Oha Soup.webp', 'Bitter Leaf Soup': 'food/Bitter Leaf Soup.jfif', 'Nsala Soup': 'food/Nsala Soup.jfif', 'Vegetable Soup': 'food/Vegetable Soup.webp', 'Afang Soup': 'food/Afang Soup.jfif', 'Ogbono Soup': 'food/Ogbono Soup.jpeg', 'Cowtail Pepper Soup': 'food/Cowtail Pepper Soup.webp', 'Catfish Pepper Soup': 'food/Catfish Pepper Soup.webp', 'Chicken Pepper Soup': 'food/Chicken Pepper Soup.webp', 'Dry Fish Pepper Soup': 'food/Dry Fish Pepper Soup.webp', 'Goat Meat Pepper Soup': 'food/Goat Meat Pepper Soup.webp',
 			'Fried Yam, Potato, Plantain': 'food/Fried Yam, Potato, Plantain.webp', 'Jollof Rice': 'food/Jollof Rice.webp', 'Fried Rice': 'food/Fried Rice.webp', 'Asun Jollof Rice': 'food/Asun Jollof Rice.jpeg', 'Steamed Rice and Stew': 'food/Steamed rice & stew.webp', 'Eba/Semovita': 'food/Eba semo.webp', 'Poundo Flour': 'food/Eba.jfif', 'Plantain': 'food/Fried Plantain.jfif', 'Fried, Boiled Yam and Egg Sauce': 'food/Fried, Boiled Yam and Egg Sauce.webp', 'Fried, Boiled Potato and Egg Sauce': 'food/Fried, Boiled Potato and Egg Sauce.jpg', 'Fried, Boiled Plantain and Egg Sauce': 'food/Fried, Boiled Plantain and Egg Sauce.jfif',
-			'Peppered Snail': 'food/Peppered Snail.webp', 'Beef': 'food/Beef.webp', 'Goat Meat': 'food/Goat Meat.jfif', 'Cow Tail': 'food/Cow Tail.jfif', 'Croaker Fish': 'food/Croaker Fish.jfif', 'Catfish': 'food/Catfish.webp', 'Chicken': 'food/Chicken.jfif', 'Turkey': 'food/Turkey.webp', 'Boiled Egg': 'food/Boiled Egg.jfif',
+			'Peppered Snail': 'food/Peppered Snail.webp', 'Beef': 'food/Beef.webp', 'Goat Meat': 'food/Goat Meat.jfif', 'Cow Tail': 'food/Cow Tail.jfif', 'Croaker Fish': 'food/Croaker Fish.jfif', 'Catfish': 'food/Catfish.webp', 'Chicken': 'food/Chicken.jfif', 'Turkey': 'food/Turkey.webp', 'Boiled Egg': 'food/Boiled Egg.jfif', 'Dry Fish': 'food/Dry Fish.jpeg',
 			'Trophy Beer': 'drinks/Trophy.webp', 'Legend': 'drinks/Legend.jpg', 'Hero': 'drinks/Hero.jfif', 'Life': 'drinks/Life.png', 'Star': 'drinks/Star.jfif', 'Heineken (Big)': 'drinks/Heineken.webp', 'Heineken (Medium)': 'drinks/Heineken.webp', 'Budweiser': 'drinks/Budweiser.jfif', 'Gulder': 'drinks/Gulder.jfif', 'Tiger': 'drinks/Tiger.jfif', 'Medium Stout': 'drinks/Medium Stout.jfif', 'Small Stout': 'drinks/small stout.jfif', 'Flying Fish': 'drinks/Flying Fish.jfif', 'Smirnoff Ice': 'drinks/Smirnoff.webp', 'Smirnoff DB': 'drinks/Smirnoff DB.jfif', 'Desperados': 'drinks/Desperados.jfif', 'Castle Lite': 'drinks/Castle Light.jfif', 'Legend Stout': 'drinks/Legend Stout.jfif', '33 Export': 'drinks/33 export.jfif',
-			'Plastic Coke/Fanta/Sprite': 'drinks/Plastic Coke,Fanta,Sprite.jfif', 'Plastic Coke,Fanta,Sprite': 'drinks/Plastic Coke,Fanta,Sprite.jfif', 'Fayrouz': 'drinks/Fayrouz.jfif', 'Amstel Malt': 'drinks/Amstel Malt.jfif', 'Guinness Malt': 'drinks/Guiness Malt.jfif', 'Hollandia Yoghurt (Plain)': 'drinks/Hollandia Yoghurt (Plain).jfif', 'Hollandia Yoghurt (Strawberry)': 'drinks/Hollandia Yoghurt (Strawberry).jfif', 'Chi Exotic': 'drinks/Chi Exotic.jfif', 'Vita Milk': 'drinks/Vita Milk.jfif', '5 Alive': 'drinks/5 Alive.jfif', 'Water': 'drinks/Bottle Water.jfif', 'Bottle Water': 'drinks/Bottle Water.jfif', 'Black Bullet': 'drinks/Black Bullet.png', 'Predator': 'drinks/predator.jfif', 'Red Bull': 'drinks/redbull.jfif', 'Four Cousins': 'drinks/Four Cousins.jfif', 'Escudo Rojo': 'drinks/Escudo Rojo.jfif', 'Ascon Agor': 'drinks/Asconi Agor.jfif', 'Asconi Agor': 'drinks/Asconi Agor.jfif', 'Jameson Green': 'drinks/Jameson Green.jfif', 'Jameson Black': 'drinks/Jameson Black.jfif', 'Origin Bitters': 'drinks/Origin Bitters.jfif', 'Action Bitters': 'drinks/Action Bitters.jfif', 'Lacoco': 'drinks/Lacoco.jfif'
+			'Plastic Coke/Fanta/Sprite': 'drinks/Plastic Coke,Fanta,Sprite.jfif', 'Plastic Coke,Fanta,Sprite': 'drinks/Plastic Coke,Fanta,Sprite.jfif', 'Fayrouz': 'drinks/Fayrouz.jfif', 'Amstel Malt': 'drinks/Amstel Malt.jfif', 'Guinness Malt': 'drinks/Guiness Malt.jfif', 'Hollandia Yoghurt (Plain)': 'drinks/Hollandia Yoghurt (Plain).jfif', 'Hollandia Yoghurt (Strawberry)': 'drinks/Hollandia Yoghurt (Strawberry).jfif', 'Chi Exotic': 'drinks/Chi Exotic.jfif', 'Vita Milk': 'drinks/Vita Milk.jfif', '5 Alive': 'drinks/5 Alive.jfif', 'Water': 'drinks/Bottle Water.jfif', 'Bottle Water': 'drinks/Bottle Water.jfif', 'Ribena': 'drinks/Ribena.jfif', 'Chivita': 'drinks/Chivita.webp', 'Berry Blast': 'drinks/Berry Blast.jfif', 'Black Bullet': 'drinks/Black Bullet.png', 'Predator': 'drinks/predator.jfif', 'Red Bull': 'drinks/redbull.jfif', 'Four Cousins': 'drinks/Four Cousins.jfif', 'Escudo Rojo': 'drinks/Escudo Rojo.jfif', 'Ascon Agor': 'drinks/Asconi Agor.jfif', 'Asconi Agor': 'drinks/Asconi Agor.jfif', 'Jameson Green': 'drinks/Jameson Green.jfif', 'Jameson Black': 'drinks/Jameson Black.jfif', 'Origin Bitters': 'drinks/Origin Bitters.jfif', 'Action Bitters': 'drinks/Action Bitters.jfif', 'Lacoco': 'drinks/Lacoco.jfif'
 		};
 		const sectionCategories = {
 			Foods: ['English Breakfast', 'Pasta', 'Porridge Plate', 'Native Soups', 'Pepper Soup', 'Finger Soul Food', 'Rice Dishes', 'Swallow', 'Side Dishes', 'Protein'],
